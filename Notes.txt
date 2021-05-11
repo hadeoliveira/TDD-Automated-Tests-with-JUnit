@@ -1,0 +1,35 @@
+Anotações
+
+JUnit é um framework para testes automatizados. O intuito do uso de testes é para verificar se regras de negócios estão sendo cumpridas normalmente e para facilitar manutenção de código. Caso uma alteração seja feita incorretamente, os testes apontariam logo no início. JUnit é um framework antigo e padrão do desenvolvimento Java.
+A ideia do JUnit veio para facilitar, pois caso o desenvolvedor fosse testar todos os cenários de forma manual, poderia ser muito trabalhoso e até mesmo cometer erros.
+A ideia é que cada cenário seja testado com valores diferentes e o nome dos métodos deve ser um nome descritivo, indicando o cenário testado. Para indicar que é um método de teste, colocamos a anotação @Test antes do nome da classe. 
+O nome da classe é o nome da classe + sufixo "Test".
+Quando executamos, executaremos com Run As -> JUnit Test. Caso ocorra tudo bem, ficará com a barra verde. Caso contrário, barra vermelha com a stack de erro. As IDEs apresentam plugins de integração com o JUnit para facilitar a leitura dos resultados dos testes. 
+
+Os testes devem possuir todos os cenários possíveis. Ou seja, maior que o limite, exatamente o limite e menor que o limite (considerando que o comparativo sejam valores). Todos os valores possíveis de uma variável devem ser testados.
+Duas formas de escrever é clicar com o botão direito na classe -> New -> JUnit -> JUnit Test Case, e começar o desenvolvimento dos testes
+Uma outra forma é criar direto a classe em um diretório src/test
+
+O mais comum é implementar o código e depois efetuar os testes. Você conversa com a área de negócio, entende a implementação, quais são as regras, requisitos, validações e implementa. Depois da implementação, são efetuados os testes do código. 
+Uma outra abordagem ao trabalhar com testes automatizados é invertendo o fluxo. Primeiro efetua os testes e depois implementa. Escreve o teste automatizado e depois efetua a implementação. A partir do teste, é feito um guia para o desenvolvimento. Semelhante a um rascunho, para que saibamos quais classes implementar, parâmetros, retorno, etc. A medida que escrevo o teste, implemento. O nome disso é Test Driven Development. 
+Fluxo correto do TDD:
+TESTES -> IMPLEMENTAÇÃO -> REFATORAÇÃO -> TESTES -> ...
+
+Nem sempre precisamos seguir o TDD. 
+Vantagens do TDD
+- Código já sai testado após a implementação
+- Evita testes viciados na implementação. É comum escrever o teste pensando na implementação e não ao comportamento. Um teste é SEMPRE escrito para um comportamento. Qual é o comportamento esperado? Não importa a implementação. 
+- Refatoração faz parte do processo. O Refactoring é uma boa prática para melhorar a qualidade do código.
+- Ajuda a manter foco e a não implementar código desnecessário. A tendência é escrever um código mais simples. 
+
+Quando utilizar o TDD? 
+O ideal é quando devemos implementar uma funcionalidade complexa e que ainda não sabemos como fazer. O TDD te ajuda porque ele funciona como rascunho. 
+Código simples que nao tem problema com complexidade -> talvez nao vale a pena usar o TDD
+
+É importante refatorar os testes também!
+MÉTODO PRIVADO NÃO É TESTADO. Quando testamos um método externo que é public, e usa o private, por fora já estamos testando o método private. 
+Trocar um método private para public apenas para testar é uma má prática.
+
+QUAIS CLASSES DEVO TESTAR? DEVO TESTAR TODAS AS CLASSES?
+Classes de dominio não são testadas. É improdutivo e desnecessário. Por exemplo, uma classe funcionário. É desnecessario testar um getter ou setter
+Testamos apenas classes com regras de negocio. Coisas que tendem a mudar no futuro ou que mudam com frequência. Classes que tenham regra de negocio e muitas mudanças devem ser testadas. Sempre que mexemos na classe, há risco de quebrar uma aplicação. 
